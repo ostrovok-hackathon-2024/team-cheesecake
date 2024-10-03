@@ -1,0 +1,26 @@
+services:
+
+  postgres:
+    image: postgres:16.3
+    container_name: postgres
+    hostname: postgres
+    environment:
+      POSTGRES_DB: dynamic_pricing 
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 5432
+    volumes:
+      - ./app_pg_data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+
+  redis:
+    image: redis:6.2-alpine
+    container_name: redis
+    hostname: redis
+    command:
+      - 'redis-server'
+      - '--requirepass 6379'
+    volumes:
+      - ./app_redis_data:/var/lib/redis
+    ports:
+      - 6379:6379
