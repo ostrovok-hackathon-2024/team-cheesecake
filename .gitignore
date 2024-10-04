@@ -1,3 +1,5 @@
 venv
 app_*_data
-
+.vscode/
+.idea/
+__pycache__/
